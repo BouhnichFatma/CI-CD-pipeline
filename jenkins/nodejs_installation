@@ -5,3 +5,9 @@ wget https://nodejs.org/dist/v14.16.0/node-v14.16.0-linux-x64.tar.xz
 tar -xvzf node-v14.16.0-linux-x64.tar.xz
 yum npm install
 node --version
+
+Setup nodejs on Jenkins console
+Install nodejs plugin without restart
+Manage Jenkins > Jenkins Plugins > available > Nodejs
+
+
