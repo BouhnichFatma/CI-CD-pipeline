@@ -1,0 +1,7 @@
+#Install nodejs on Jenkins
+1. Download nodejs packages https://nodejs.org/en/download/ onto Jenkins server.
+
+wget https://nodejs.org/dist/v14.16.0/node-v14.16.0-linux-x64.tar.xz
+tar -xvzf node-v14.16.0-linux-x64.tar.xz
+yum npm install
+node --version
