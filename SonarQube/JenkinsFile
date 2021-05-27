@@ -1,1 +1,27 @@
+pipeline {
+  agent any
+  stages {
+    stage('Checkout Scm') {
+      steps {
+        git(credentialsId: '6bb14866-ff16-4e78-b78c-6b574dc3f710', url: 'git@gitlab.com:fretk/fretk.git')
+      }
+    }
 
+    stage('Shell script 0') {
+      steps {
+        sh '''cd /var/lib/jenkins/workspace/devops
+docker tag devops_frontend bouhnich/frontend-devops-image
+sudo docker push bouhnich/frontend-devops-image
+docker tag strapi/strapi bouhnich/backend-devops-image
+sudo docker push bouhnich/backend-devops-image
+docker rmi devops_frontend
+sudo docker-compose up
+sudo docker-compose down'''
+      }
+    }
+
+  }
+  triggers {
+    pollSCM('* * * * *')
+  }
+}
